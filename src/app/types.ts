@@ -4,4 +4,10 @@ export interface Poll{
   results: number[]; // [0, 0, 0, 0, 5, 7, 2]
   options: string[]; // [monday, tuesday, wednesday, thursday, friday, ...]
   thumbnail: string; // https://image.png
+  voted: boolean;
+}
+
+export interface Voter{
+  id: string;
+  voted: number[];
 }

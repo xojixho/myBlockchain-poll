@@ -21,13 +21,19 @@
     <app-poll
       *ngFor="let poll of polls"
       [question]="poll.question"
-      [votes]="poll.votes"
+      [votes]="poll.results"
       [voted]="poll.voted"
-      [pollImage]="poll.image"
+      [pollImage]="poll.thumbnail"
+      (click) = "setActivePoll(poll)"
     >
     </app-poll>
   </div>
   <div class="container poll-detail">
-    <app-poll-vote></app-poll-vote>
+    <app-poll-vote
+    *ngIf="activePoll"
+    [voted]="activePoll.voted"
+    [question]="activePoll.question"
+    [options]="activePoll.options"
+    [results]="activePoll.results"></app-poll-vote>
   </div>
 </div>
