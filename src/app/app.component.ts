@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { PollService } from './poll-service/poll.service';
 import { Poll } from './types';
 
 @Component({
@@ -10,23 +11,11 @@ export class AppComponent {
   showForm = false;
   activePoll = null;
 
-  polls: Poll[] = [{
-    id: 1,
-    question: 'Do you like dogs or cats?',
-    thumbnail: 'https://images.pexels.com/photos/617278/pexels-photo-617278.jpeg',
-    results: [0, 5, 7],
-    options: ['Cats', 'Dogs', 'None'],
-    voted: true,
-  },
-  {
-    id: 2,
-    question: 'What month of summer do you like most?',
-    thumbnail: 'https://images.pexels.com/photos/417023/pexels-photo-417023.jpeg',
-    results: [1, 3, 1],
-    options: ['june', 'july', 'august'],
-    voted: false,
-  },
-];
+  polls = this.ps.getPolls()
+
+  constructor(private ps: PollService){
+
+  }
 
 setActivePoll(poll){
   this.activePoll = null;
